@@ -73,7 +73,13 @@ To deploy the project:
 ```sh
 npm run build
 ```
+## 👤 About Me
+Hey there! I'm shereen wagdy , a passionate frontend developer currently learning React and improving my development skills. I enjoy building interactive web applications and exploring new technologies.
 
+🔗 Connect with me:
+
+📧 Email: shereenwagdy214@gmail.com
+💼 LinkedIn: https://www.linkedin.com/in/shereen-wagdy-%F0%9F%87%B5%F0%9F%87%B8-4430a3166/ 
 
 
 
