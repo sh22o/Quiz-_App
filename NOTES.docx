@@ -1,0 +1,95 @@
+NOTES FOR STUDY 
+start comp by const as function 
+first step >> create component as html only 
+step 2 >> link css to my component and use it 
+
+/* get error and i learn new thing */ 
+***********************************************************************
+🎯 Summary
+Approach	Import Style	Usage
+✅ Regular CSS (Global Styles)	import "./Quize.css";	className="button"
+✅ CSS Modules (Scoped Styles)	import styles from "./Quize.module.css";	className={styles.button}
+❌ Incorrect Way	import stylesheet from "./Quize.css";	className={stylesheet.button}
+**************************************************************************
+// i used import "./Quize.css"; to link with component , simple way 
+
+// at css : used two  two CSS properties are used for flexbox layout and help organize elements inside a flex container.
+1- flex-direction: column; >> this used to items stack vertically 
+ 2-  gap: 00px >> Adds space between flex items (without using margin). 
+
+ when text html >> add all things just id num for q  to   think how to convert this dynamic 
+
+step 3 & step 4 >> represent data object and replacet text to be dynamic 
+ step 3 >> use data.js >> set on assets 
+
+ step 4 >> start create variable by use state >> to get the data 
+ 1- index of list question 
+ 2- to acsess thing form object , by use state like 
+need to question >> use state question , set question  >>  
+
+************error fixed  ******************  
+don't use >> useEffeect >> for question load from data 
+when index change >> question don not update >> 
+ because React does not re-run useState(data[index]) on state changes. 
+
+ ************ ✅ Solution: Use useEffect *************
+useEffect(() => {
+  setQuestion(data[index]);
+}, [index]); 
+
+🚀 How It Works:
+useEffect listens for changes in index.
+When index updates, useEffect re-runs, setting Question = data[index].
+Now, every time the user clicks "Next", the question updates properly. 
+
+and use on Button >> event handeller >> 
+1️⃣ onClick={() => { ... }}
+ and use if condition on it to check index >> 
+ when qundition true >> (index < data.length - 1 ) {setIndex(index + 1); 
+ run setIndex function to increase the index value 
+ >>  updates the state, triggering a re-render.
+
+ else >> it means we are at the last question, so we don’t increase index further.
+} 
+
+step 5 >> 
+start logic code >> 
+5.1 check answer for question , and update ui 
+
+-create function check ans 
+take clicked e and the select answer .ans from data 
+compare values >> to check value correct or else ( worng )
+and use js to access css >> to cange syle by attribute ( e.target.classList.add())
+go to li option use event handeler onClick =  (element)=>{ // check values by function }
+create style for each >> correct , worng on css style 
+
+*******************Error fixed ************************** 
+1- from data ans = num of answer not text >> when i run code all option give me worng 
+because i compary values not number >> change ans to value text 
+
+2-Selected answer stays highlighted on the next question 
+
+*******************new features add on project **************** 
+1- start time >> 3..2..1 
+create useState for countdown , start quize 
+useEffect(() => {
+  if (startQuiz) return; // Stop if quiz has started
+
+  const countdownTimer = setInterval(() => {
+    setCountdown((prev) => {
+      if (prev === 1) {
+        clearInterval(countdownTimer);
+        setStartQuiz(true); // Start the quiz
+      }
+      return prev - 1;
+    });
+  }, 1000);
+
+  return () => clearInterval(countdownTimer);
+}, []);
+
+
+
+
+
+
